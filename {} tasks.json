@@ -1,0 +1,99 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build portfolio",
+			"type": "shell",
+			"command": "npm run build",
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build portfolio (bypass policy)",
+			"type": "shell",
+			"command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location 'c:\\Users\\ADMIN\\Desktop\\New folder\\portfolio'; npm run build\"",
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build portfolio (cmd)",
+			"type": "shell",
+			"command": "cmd /c \"cd /d \"\"C:\\Users\\ADMIN\\Desktop\\New folder\\portfolio\"\" && npm run build\"",
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build portfolio (npm.cmd)",
+			"type": "shell",
+			"command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location -LiteralPath 'C:\\Users\\ADMIN\\Desktop\\New folder\\portfolio'; & 'C:\\Program Files\\nodejs\\npm.cmd' run build\"",
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Check certification export",
+			"type": "shell",
+			"command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location -LiteralPath 'C:\\Users\\ADMIN\\Desktop\\New folder\\portfolio'; & 'C:\\Program Files\\nodejs\\node.exe' -e \\\"import('./src/data/certifications.js').then(m => console.log(Object.keys(m))).catch(e => { console.error(e); process.exit(1); });\\\"\"",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "none"
+		},
+		{
+			"label": "Final production build",
+			"type": "shell",
+			"command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location -LiteralPath 'C:\\Users\\ADMIN\\Desktop\\New folder\\portfolio'; & 'C:\\Program Files\\nodejs\\npm.cmd' run build\"",
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Clear Vite cache and rebuild",
+			"type": "shell",
+			"command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location -LiteralPath 'C:\\Users\\ADMIN\\Desktop\\New folder\\portfolio'; Remove-Item -Recurse -Force .\\dist, .\\node_modules\\.vite -ErrorAction SilentlyContinue; & 'C:\\Program Files\\nodejs\\npm.cmd' run build\"",
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Verify module export and build",
+			"type": "shell",
+			"command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location -LiteralPath 'C:\\Users\\ADMIN\\Desktop\\New folder\\portfolio'; & 'C:\\Program Files\\nodejs\\node.exe' -e \\\"import('./src/data/certifications.js').then(m => console.log('DEFAULT_LENGTH:' + m.default.length)).catch(e => { console.error(e); process.exit(1); });\\\"; & 'C:\\Program Files\\nodejs\\npm.cmd' run build\"",
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Run dev server",
+			"type": "shell",
+			"command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location -LiteralPath 'C:\\Users\\ADMIN\\Desktop\\New folder\\portfolio'; & 'C:\\Program Files\\nodejs\\npm.cmd' run dev -- --host 0.0.0.0\"",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "none"
+		},
+		{
+			"label": "Restart dev server on port 4173",
+			"type": "shell",
+			"command": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location -LiteralPath 'C:\\Users\\ADMIN\\Desktop\\New folder\\portfolio'; & 'C:\\Program Files\\nodejs\\npm.cmd' run dev -- --host 0.0.0.0 --port 4173\"",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "none"
+		}
+	]
+}
